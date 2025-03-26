@@ -16,10 +16,7 @@ app.use(cors()); // Enable CORS
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve uploaded images
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://ptlrcollege:developer@cluster1.dtpxn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect("process.env.MONGO_URI");
 
 // Models
 const UserSchema = new mongoose.Schema({
