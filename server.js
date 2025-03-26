@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const nodemailer = require("nodemailer");
-
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 // Middleware
@@ -17,6 +17,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve u
 
 // MongoDB Connection
 mongoose.connect("process.env.MONGO_URI");
+
 
 // Models
 const UserSchema = new mongoose.Schema({
@@ -305,4 +306,4 @@ app.put("/admin/products/:id", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.listen(PORT,()=> console.log("Server running on port 5000"));
